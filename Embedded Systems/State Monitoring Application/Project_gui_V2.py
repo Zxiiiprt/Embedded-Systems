@@ -20,13 +20,13 @@ def track_state():
             count = int.from_bytes(curr, "big")
             state = calculate_state(count)
             print("CURRENT STATE: Count - " + str(count) + ", LED State - " + str(state) + "\n")
-            
-#Cycle to the next state    
+
+#Cycle to the next state
 def next():
     print("We're moving on to the next state\n")
     uart.write(str.encode('i'))
-    
-#Cycle to the previous state    
+
+#Cycle to the previous state
 def prev():
     print("We're moving back to the previous state\n")
     uart.write(str.encode('d'))
@@ -36,7 +36,7 @@ def off():
     print("Final STATE: LED's are OFF\n")
     uart.write(str.encode('o'))
 
-#Quit Application    
+#Quit Application
 def quit():
     print("\n***** EXIT SUCCESSFULLY *****")
     uart.write(str.encode('q'))
@@ -69,7 +69,7 @@ def calculate_state(data):
     if data == 4:
         status = "CYAN"
     return status
-    
+
 b1 = tk.Button(bg, text="NEXT", command=next, bg="#00fc2e", fg="black", font=("Book Antiqua", 25))
 b2 = tk.Button(bg, text="PREVIOUS", command=prev, bg="#3aadf4", fg="black", font=("Book Antiqua", 25))
 ###Uncoment b3 to use Button to explicitly Grab current state
